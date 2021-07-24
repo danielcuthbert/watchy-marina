@@ -32,7 +32,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       //Hour of Day
       textstring = currentTime.Hour;
       display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
-      display.setCursor(175-w, 85-5);
+      display.setCursor(185-w, 85-5);
       display.print(textstring);
       
       //Minutes
@@ -43,14 +43,15 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       }
       textstring += currentTime.Minute;
       display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
-      display.setCursor(185-w, 85+3+h);
+      display.setCursor(185-w, 90-5+h);
       display.print(textstring);
 
       // Battery Level
-      // this needs more work, it looks shit 
-      float batt = (getBatteryVoltage()-3.3)/0.9;
+      display.drawRect(8, 16, 34, 12, GxEPD_WHITE); //the box
+      display.drawRect(44, 19, 3, 6, GxEPD_WHITE); // the postive terminal
+      float batt = (getBatteryVoltage() - 3.3) / 0.9;
       if (batt > 0) {
-       display.fillRect(20,20,26*batt,4,GxEPD_WHITE);
+       display.fillRect(12,20,21*batt,4,GxEPD_WHITE); //the status charge
       }									
 
       // Second part of the display
@@ -68,7 +69,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       // The Day
       textstring = dayStr(currentTime.Wday);
       display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
-      display.setCursor(8, 100);
+      display.setCursor(8, 130);
       display.print(textstring);
             
       // The Month
@@ -76,7 +77,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       textstring += " ";
       textstring += currentTime.Day;
       display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
-      display.setCursor(8, 70);
+      display.setCursor(8, 100);
       display.print(textstring);
  
     }
