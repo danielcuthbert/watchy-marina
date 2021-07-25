@@ -5,9 +5,7 @@
  ****************************************************/
 
 #include <Watchy.h> //include the Watchy library
-#include "marina_opentype12pt7b.h"
-#include "marina_opentype50pt7b.h" // 50pt works but maybe smaller will be better
-#include "Baloo2_Regular12pt7b.h"
+#include "Baloo2_Regular12pt7b.h" //Baloo 2 from https://fonts.google.com/specimen/Baloo+2
 #include "Baloo2_Regular50pt7b.h"
 				
 
@@ -18,6 +16,9 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       int16_t  x1, y1; // Display is a 200x200 GDEH0154D67
       uint16_t w, h;
       String textstring;
+
+      WiFi.mode(WIFI_OFF);
+      btStop();
    
       // We don't want the activity sensor to roll over, so reset it at 00:00
       if(currentTime.Hour == 00 && currentTime.Minute == 00) {
