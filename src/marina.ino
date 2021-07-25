@@ -7,6 +7,8 @@
 #include <Watchy.h> //include the Watchy library
 #include "marina_opentype12pt7b.h"
 #include "marina_opentype50pt7b.h" // 50pt works but maybe smaller will be better
+#include "Baloo2_Regular12pt7b.h"
+#include "Baloo2_Regular50pt7b.h"
 				
 
 class WatchFace : public Watchy { //inherit and extend Watchy class
@@ -27,7 +29,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       display.fillScreen(GxEPD_BLACK);
       display.setTextColor(GxEPD_WHITE);
       display.setTextWrap(false);
-      display.setFont(&marina_opentype_bigfontsite_com50pt7b);
+      display.setFont(&Baloo2_Regular50pt7b);
      
       //Hour of Day
       textstring = currentTime.Hour;
@@ -57,7 +59,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       // Second part of the display
       // This is where the date/month and step counter is shown
       // We need a smaller font
-      display.setFont(&marina_opentype_bigfontsite_com12pt7b);
+      display.setFont(&Baloo2_Regular12pt7b);
 
       //Our Step Counter
       textstring = sensor.getCounter();
