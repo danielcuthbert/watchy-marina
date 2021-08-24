@@ -17,7 +17,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       uint16_t w, h;
       String textstring;
 
-      WiFi.mode(WIFI_OFF);
+      WiFi.mode(WIFI_OFF); //we don't need wifi/bt so turning it off helps with the battery drain. 
       btStop();
    
       // We don't want the activity sensor to roll over, so reset it at 00:00
